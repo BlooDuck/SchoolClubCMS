@@ -1,0 +1,10 @@
+
+<h1>{{ post.title }}</h1>
+<h3>Posted by: {{ post.author }} | Published on: {{ post.pub_date }}</h3>
+<p>{{ post.body }}</p>
+<h2>Comments:</h2>
+<ul>
+    {% for comment in comments %}
+    <li><p>Posted by: {{ comment.author }} | Published on: {{ comment.pub_date }}</p><p>{{ comment.body }}</p></li>
+    {% endfor %}
+</ul>
