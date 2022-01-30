@@ -55,7 +55,7 @@ ROOT_URLCONF = 'SchoolClubCMS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['SchoolClubCMS/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

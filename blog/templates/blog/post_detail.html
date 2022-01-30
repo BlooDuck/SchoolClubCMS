@@ -1,10 +1,35 @@
+{% extends 'index.html' %}
 
-<h1>{{ post.title }}</h1>
-<h3>Posted by: {{ post.author }} | Published on: {{ post.pub_date }}</h3>
+{% block content %}
+<h2>{{ post.title }}</h2>
+<h3 class="small">Posted by: {{ post.author }} | Published on: {{ post.pub_date }}</h3>
 <p>{{ post.body }}</p>
-<h2>Comments:</h2>
+
+
+<dl class="row">
+    <h4>Post a comment:</h4>
+    {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment has been posted!
+        </div>
+    {% else %}
+    <form action="" method="post" class="row g-3">
+        {% csrf_token %}
+        
+        {{ form.as_ul}}
+        <div class="col-15">
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+    {% endif %}
+</dl>
+
+<dl class="row">
+<h4>Comments:</h4>
 <ul>
     {% for comment in comments %}
-    <li><p>Posted by: {{ comment.author }} | Published on: {{ comment.pub_date }}</p><p>{{ comment.body }}</p></li>
+    <li><p><strong>{{ comment.author }}</strong> <span>{{ comment.pub_date }}</span></p><p>{{ comment.body }}</p></li>
     {% endfor %}
 </ul>
+</dl>
+{% endblock %}

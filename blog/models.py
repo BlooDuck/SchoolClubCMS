@@ -1,6 +1,8 @@
 from django.db import models
 import datetime
 from django.utils import timezone
+#from django import forms
+
 
 # Create your models here.
 
@@ -18,10 +20,10 @@ class Post(models.Model):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)        # ties comment to post
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")        # ties comment to post
     author = models.CharField(max_length=50)                        # comment author
     body = models.TextField()                                       # comment body
-    pub_date = models.DateField('date published')                   # comment pub date
+    pub_date = models.DateField('date published', default=datetime.date.today)                   # comment pub date
 
     # returns body as class str
     def __str__(self):
