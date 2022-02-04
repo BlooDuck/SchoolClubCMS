@@ -31,7 +31,7 @@
 <h4>Comments:</h4>
 
     {% for comment in comments %}
-    <p><strong>{{ comment.author }}</strong> <span>{{ comment.pub_date }}</span></p><p>{{ comment.body }}</p>
+    <p><strong>{{ comment.author }}</strong> <span>{{ comment.pub_date }}</span></p><p>{{ comment.body|safe }}</p>
     {% endfor %}
 
 </dl>
