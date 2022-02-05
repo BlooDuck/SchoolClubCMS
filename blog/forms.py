@@ -7,7 +7,7 @@ class CommentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['author'].widget.attrs.update({'class':'form-control form-control-sm', 'placeholder':'Author...'})
-        self.fields['body'].widget.attrs.update({'class':'form-control form-control-sm editable', 'placeholder':'Comment...', 'rows':'3'})
+        self.fields['body'].widget.attrs.update({'class':'form-control form-control-sm', 'id':'mytextarea', 'placeholder':'Comment...', 'rows':'3'})
 
         # Remove labels from generated forms
         self.fields['author'].label = ''

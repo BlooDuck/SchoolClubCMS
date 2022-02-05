@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 <h2>{{ post.title }}</h2>
@@ -17,7 +17,13 @@
         {% csrf_token %}
         
         {{ form.as_ul}}
-        <script>var editor = new MediumEditor('.editable');</script>
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#editor' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
 
         <div class="col-15">
                 <button type="submit" class="btn btn-primary">Submit</button>
