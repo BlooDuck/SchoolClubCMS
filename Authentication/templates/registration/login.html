@@ -38,10 +38,10 @@
                                 <a class="nav-link active" aria-current="page" href="#">Gallery</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/blog/">Articles</a>
+                                <a class="nav-link active" aria-current="page" href="/">Articles</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="">Login</a>
+                                <a class="nav-link active" aria-current="page" href="/accounts/login/">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="/register/">Register</a>
@@ -61,15 +61,31 @@
                 {% if next %}
                     <p>Hey, you can't access that page</p>
                 {% endif %}
+                {% if user.is_authenticated %}
+                    <h5> You are logged in as {{ user.username }} </h5>
+                    <button type="submit" = value="logout" class="btn btn-primary">Logout</button>
+                    <button type"hidden" name="logout" value="{{ next }}"></button>
+                    
+                {% else %}
                 <form method = "post" action = "{% url 'login' %}">
                     {% csrf_token %}
-                    <p>UserName: {{ form.username }}</p>
-                    <p>Password: {{ form.password }}</p>
-
-                    <p><input type="submit" = value="login"></p>
-                    <input type="hidden" name="next" value="{{ next }}">
-                </form> 
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address {{ form.username }}</label>
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password {{ form.password }}</label>
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" = value = "login" class="btn btn-primary">Submit</button>
+                    <button type="hidden" name="next" value="{{ next }}"></button>
+                  </form>
+                  {% endif %}
             </div>
+            
         </main>
         
     </body>
