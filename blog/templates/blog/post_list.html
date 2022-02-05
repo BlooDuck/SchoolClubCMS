@@ -2,9 +2,9 @@
 
 {% block content %}
 {% if latest_post_list %}
-    <ul style="list-style-type: none;  ">
+    
     {% for post in latest_post_list %}
-        <li>
+    <div class="col-13 vstack gap-3 ms-auto">
             <div class="card">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
@@ -14,9 +14,10 @@
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Read more...</a>
                 </div>
-            </div></li>
+            </div>
+    </div>
     {% endfor %}
-    </ul>
+        
 {% else %}
     <p>No posts are available.</p>
 {% endif %}

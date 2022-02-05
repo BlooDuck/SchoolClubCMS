@@ -6,6 +6,9 @@ class Club(models.Model):
     about = models.TextField()
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 class TeamMember(models.Model):
     name = models.CharField(max_length=100)
     pic = models.ImageField(max_length=200)
