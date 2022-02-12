@@ -1,7 +1,7 @@
-{% extends 'events/layout.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block body %}
+{% block content %}
     Create
     <form action="{% url 'create'%}" method="post">{% csrf_token %}
     {{ form.as_p }}

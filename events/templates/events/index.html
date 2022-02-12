@@ -1,7 +1,7 @@
-{% extends 'events/layout.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block body %}
+{% block content %}
     {% for event in events %}
     <ul>
         <li>{{event.user}}</li>
@@ -12,7 +12,7 @@
         <li>{{event.end_time}}</li>
         <li>{{event.club}}</li>
         <li>{{event.description}}</li>
-         <li>Created on: {{event.created}}</li>
+        <li>Created on: {{event.created}}</li>
     </ul>
     {% endfor %}
 {% endblock %}
