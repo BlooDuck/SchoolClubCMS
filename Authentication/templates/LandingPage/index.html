@@ -16,6 +16,9 @@
             form li {
                 list-style-type: none;  
             }
+            main {
+                text-align: center;
+            }
         </style>
     </head>
     <body>
@@ -38,11 +41,17 @@
                                 <a class="nav-link active" aria-current="page" href="#">Gallery</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="">Articles</a>
+                                <a class="nav-link active" aria-current="page" href="/">Articles</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/accounts/login/">Login</a>
-                            </li>
+                            {% if user.is_aunthenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="/accounts/logout/">Logout</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="/accounts/login/">Login</a>
+                                </li>
+                            {% endif %}
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="/register/">Register</a>
                             </li>
@@ -51,16 +60,10 @@
                 </div>
             </nav>
         </header>
-        <main>
-            <h1> INDEX PAGE </h1>
-            {% if user.is_authenticated %}
-            <h4> Your Name is {{ user.username }} </h4>
-            {% else %}
-            <h4> You are not logged in </h4>
-            {% endif %}
-        </main>
-        <footer>
-
+            {% block main %}
+            {% endblock %}
+        <footer>    
+            
         </footer>
         
     </body>
