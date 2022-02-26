@@ -26,8 +26,3 @@ def register(request):
         }
 
     return render(request, "registration/register.html", context)
-
-def logout(request):
-    logout(request)
-    return redirect("/accounts/login/")
-    
