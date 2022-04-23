@@ -1,0 +1,18 @@
+{% extends 'events/layout.html' %}
+{% load static %}
+
+{% block body %}
+    {% for event in events %}
+    <ul>
+        <li>{{event.user}}</li>
+        <li>{{event.event_name}}</li>
+        <li>{{event.location}}</li>
+        <li>{{event.date}}</li>
+        <li>{{event.start_time}}</li>
+        <li>{{event.end_time}}</li>
+        <li>{{event.club}}</li>
+        <li>{{event.description}}</li>
+         <li>Created on: {{event.created}}</li>
+    </ul>
+    {% endfor %}
+{% endblock %}

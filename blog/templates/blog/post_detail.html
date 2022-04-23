@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-13 gap-3 rounded" style="background-color:#fff; margin-top:20px;">
+    <div class="card-body"><h3>{{ post.title }}</h3>
+    <h3 class="small">Posted by: {{ post.author }} | Published on: {{ post.pub_date }}</h3>
+    <p>{{ post.body }}</p>
+    </div>
+</div>
+
+
+    <h4>Post a comment:</h4>
+    <div class="col-13">
+    {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment has been posted!
+        </div>
+    {% else %}
+    <form action="" method="post" class="">
+        {% csrf_token %}
+        
+        {{ form.as_p}}
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#editor' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
+
+        <div class="">
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+    {% endif %}
+</div>
+
+
+
+
+<h4>Comments:</h4>
+
+    {% for comment in comments %}
+    <div class="col-13 vstack gap-3">
+
+        <div class="card-header"><strong>{{ comment.author }}</strong> <span>{{ comment.pub_date }}</span></div>
+        <div class="card-body">{{ comment.body|safe }}</div>
+    </div>
+    {% endfor %}
+
+
+{% endblock %}
